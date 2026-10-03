@@ -1,10 +1,9 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: guestbook-ui
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: guestbook-ui
@@ -13,8 +12,11 @@ spec:
       labels:
         app: guestbook-ui
     spec:
+      imagePullSecrets:
+      - name: dockerhub-creds
       containers:
-      - image: docker.io/argoproj/guestbook-ui:v2
-        name: guestbook-ui
+      - name: guestbook-ui
+        image: docker.io/argoproj/guestbook-ui:v2
         ports:
-        - containerPort: 80
+        - containerPort: 3000
+
