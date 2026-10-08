@@ -13,7 +13,7 @@ spec:
         app: guestbook-bg
     spec:
       containers:
-      - image: docker.io/argoproj/nginx:latest
+      - image: nginx:latest
         name: guestbook-bg
         ports:
         - containerPort: 80
